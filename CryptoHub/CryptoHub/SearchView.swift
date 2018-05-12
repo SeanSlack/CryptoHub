@@ -9,14 +9,15 @@
 import UIKit
 import Foundation
 
-struct Coin: Decodable {
+class Coin: Decodable {
     private enum CodingKeys: String, CodingKey {
         case id = "rank", symbol, name, priceUSD = "price_usd"
     }
-    let id: String
-    let symbol : String
-    let name : String
-    let priceUSD : String
+    var id: String
+    var symbol : String
+    var name : String
+    var priceUSD : String
+    
 }
 
 class CoinCell: UITableViewCell
@@ -33,9 +34,10 @@ class CoinCell: UITableViewCell
     }
 }
 
-class SearchView: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate {
-    var coins = [Coin]()
+class SearchView: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate, UISearchDisplayDelegate {
     
+    var coins = [Coin]()
+    var coinSearchResults:Array<Coin>?
     
     let textCellIdentifier = "TextCell"
     
@@ -63,7 +65,8 @@ class SearchView: UIViewController, UITableViewDataSource, UITableViewDelegate, 
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        searchBar.showsScopeBar = true
+        searchBar.scopeButtonTitles = ["Symbol", "Name"]
         searchBar.delegate = self
         tableView.delegate = self
         tableView.dataSource = self
@@ -92,6 +95,33 @@ class SearchView: UIViewController, UITableViewDataSource, UITableViewDelegate, 
         return cell
     }
     
-   
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        if searchText == "" {
+            getCoinData()
+        }
+        else {
+            if searchBar.selectedScopeButtonIndex == 0 {
+                coins = coins.filter({ (Coin) -> Bool in
+                    return Coin.symbol.lowercased().contains(searchText.lowercased())
+                })
+            }
+            else {
+                coins = coins.filter({ (Coin) -> Bool in
+                    return Coin.name.lowercased().contains(searchText.lowercased())
+                })
+            }
+            
+        }
+        self.tableView.reloadData()
+        
+    }
+    
 
+    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+        let Storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let DvC = Storyboard.instantiateViewController(withIdentifier: "CoinView") as! CoinView
+        
+        DvC.coinSymbol = coins[indexPath.row].symbol
+        self.navigationController?.pushViewController(DvC, animated: true)
+    }
 }
