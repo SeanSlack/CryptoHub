@@ -92,14 +92,6 @@ class SearchView: UIViewController, UITableViewDataSource, UITableViewDelegate, 
         return cell
     }
     
-    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-
-        coins = searchText.isEmpty ? data : data.filter({(dataString: String) -> Bool in
-            // If dataItem matches the searchText, return true to include it
-            return dataString.range(of: searchText, options: .caseInsensitive) != nil
-        })
-        
-        tableView.reloadData()
-    }
+   
 
 }
