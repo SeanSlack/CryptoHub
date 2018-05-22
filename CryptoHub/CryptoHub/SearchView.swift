@@ -9,21 +9,11 @@
 import UIKit
 import Foundation
 
-class Coin: Decodable {
-    private enum CodingKeys: String, CodingKey {
-        case id = "rank", symbol, name, priceUSD = "price_usd"
-    }
-    var id: String
-    var symbol : String
-    var name : String
-    var priceUSD : String
-    
-}
-
 class CoinCell: UITableViewCell
 {
     
-    @IBOutlet weak var idLabel: UILabel!
+
+    @IBOutlet weak var rankLabel: UILabel!
     @IBOutlet weak var symLabel: UILabel!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var priceLabel: UILabel!
@@ -37,6 +27,7 @@ class CoinCell: UITableViewCell
 class SearchView: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate, UISearchDisplayDelegate {
     
     var coins = [Coin]()
+    
     var coinSearchResults:Array<Coin>?
     
     let textCellIdentifier = "TextCell"
@@ -45,8 +36,8 @@ class SearchView: UIViewController, UITableViewDataSource, UITableViewDelegate, 
     @IBOutlet weak var searchBar: UISearchBar!
     
     
-    func getCoinData() {
-        let jsonURL = "https://api.coinmarketcap.com/v1/ticker/"
+    func getCoinList() {
+        let jsonURL = "https://api.coinmarketcap.com/v1/ticker/?convert=AUD"
         let url = URL(string: jsonURL)
         
         URLSession.shared.dataTask(with: url!) { [unowned self] (data, response, error) in
@@ -70,8 +61,7 @@ class SearchView: UIViewController, UITableViewDataSource, UITableViewDelegate, 
         searchBar.delegate = self
         tableView.delegate = self
         tableView.dataSource = self
-        
-        getCoinData()
+        getCoinList()
     }
     
     
@@ -87,17 +77,29 @@ class SearchView: UIViewController, UITableViewDataSource, UITableViewDelegate, 
         let cell = tableView.dequeueReusableCell(withIdentifier: textCellIdentifier, for: indexPath) as! CoinCell
         
         let coin = coins[indexPath.row]
-        cell.idLabel.text = coin.id
+        cell.rankLabel.text = coin.rank
         cell.symLabel.text = coin.symbol
         cell.nameLabel.text = coin.name
-        cell.priceLabel.text = coin.priceUSD
+        cell.priceLabel.text = coin.price
         
         return cell
     }
     
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "coinViewSegue" {
+            if let indexPath = self.tableView.indexPathForSelectedRow {
+                let controller = segue.destination as! CoinView
+                let value = coins[indexPath.row]
+                controller.coinID = value.id
+            }
+        }
+    }
+    
+    
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         if searchText == "" {
-            getCoinData()
+            getCoinList()
         }
         else {
             if searchBar.selectedScopeButtonIndex == 0 {
@@ -117,11 +119,5 @@ class SearchView: UIViewController, UITableViewDataSource, UITableViewDelegate, 
     }
     
 
-    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
-        let Storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let DvC = Storyboard.instantiateViewController(withIdentifier: "CoinView") as! CoinView
-        
-        DvC.coinSymbol = coins[indexPath.row].symbol
-        self.navigationController?.pushViewController(DvC, animated: true)
-    }
+
 }

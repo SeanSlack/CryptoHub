@@ -2,25 +2,24 @@
 //  Coins.swift
 //  CryptoHub
 //
-//  Created by Sean on 2/5/18.
+//  Created by Sean on 20/5/18.
 //  Copyright © 2018 Deakin. All rights reserved.
 //
 
+import UIKit
 import Foundation
 
-class Coins : Decodable {
+public class Coin: Decodable {
     
-    var id: String
-    var sym: String
-    var name: String
-    var price: String
+    var id: String = ""
+    var rank: String = ""
+    var symbol : String = ""
+    var name : String = ""
+    var price : String = ""
+    var dayChange: String = ""
     
-    init(id: String, sym: String, name: String, price: String) {
-        self.id = id
-        self.sym = sym
-        self.name = name
-        self.price = price
+    private enum CodingKeys: String, CodingKey {
+        case id, rank, symbol, name, price = "price_aud", dayChange = "percent_change_24h"
     }
-
     
 }
