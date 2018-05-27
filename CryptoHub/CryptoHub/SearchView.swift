@@ -33,7 +33,7 @@ class SearchView: UIViewController, UITableViewDataSource, UITableViewDelegate, 
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var searchBar: UISearchBar!
     
-    
+    //retreived list of all coins from coinmarketcap and updates tableview
     func getCoinList() {
         let jsonURL = "https://api.coinmarketcap.com/v1/ticker/?convert=AUD"
         let url = URL(string: jsonURL)
@@ -83,7 +83,7 @@ class SearchView: UIViewController, UITableViewDataSource, UITableViewDelegate, 
         return cell
     }
     
-    
+    //pushes coinID from selected row to coinview screen
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "coinViewSegue" {
             if let indexPath = self.tableView.indexPathForSelectedRow {
@@ -94,7 +94,7 @@ class SearchView: UIViewController, UITableViewDataSource, UITableViewDelegate, 
         }
     }
     
-    
+    //filters the tableview from text in the search bar, can select either symbol or name
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         if searchText == "" {
             getCoinList()

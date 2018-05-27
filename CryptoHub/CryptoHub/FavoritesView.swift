@@ -27,6 +27,7 @@ class FavCoinCell: UITableViewCell
 
 class FavoritesView: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
+    //Holds the array for coins retreived from CoreData, populated via JSON
     var coins = [Coin]()
     
     @IBOutlet weak var tableView: UITableView!
@@ -46,6 +47,8 @@ class FavoritesView: UIViewController, UITableViewDataSource, UITableViewDelegat
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    //this function retrieves the entity ‘Favourites’ from coredata, interates through each coin’s id and retrieves the appropriate coin from live JSON data, appending to the array after retrieving each coin.
     
     func getFavoriteCoins() {
         
@@ -108,6 +111,7 @@ class FavoritesView: UIViewController, UITableViewDataSource, UITableViewDelegat
         return cell
     }
     
+    //pushes coinID of selected row to the coin info screen
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "favViewSegue" {
             if let indexPath = self.tableView.indexPathForSelectedRow {

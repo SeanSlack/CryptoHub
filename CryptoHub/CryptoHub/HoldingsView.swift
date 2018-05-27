@@ -27,7 +27,7 @@ class HoldCoinCell: UITableViewCell
 }
 
 class HoldingsView: UIViewController, UITableViewDataSource, UITableViewDelegate {
-    
+    //coin array for holdings and total portfolio holdings
     var coins = [Coin]()
     var totalHoldings = 0.00
     
@@ -55,7 +55,7 @@ class HoldingsView: UIViewController, UITableViewDataSource, UITableViewDelegate
         // Dispose of any resources that can be recreated.
     }
     
-    
+    //iterates over each coin stored in 'Holdings' entity in coredata, retreives from api and appends to the coins array
     func getHoldCoins() {
         
         let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Holdings")
@@ -93,7 +93,7 @@ class HoldingsView: UIViewController, UITableViewDataSource, UITableViewDelegate
         }
         
     }
-    
+    //retreives holdings amounts and calculates total prices
     func getAmounts() {
         
         let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Holdings")
@@ -125,7 +125,7 @@ class HoldingsView: UIViewController, UITableViewDataSource, UITableViewDelegate
         }
         
     }
-    
+    //tallies the total holdings of each coin and displays at the bottom of the tableview
     func tallyTotals()
     {
         for c in coins
@@ -156,7 +156,7 @@ class HoldingsView: UIViewController, UITableViewDataSource, UITableViewDelegate
         
         return cell
     }
-    
+    //pushes currently selected coin to coin view screen
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "holdViewSegue" {
             if let indexPath = self.tableView.indexPathForSelectedRow {

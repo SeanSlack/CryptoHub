@@ -51,6 +51,7 @@ class CoinView: UIViewController, UITextFieldDelegate {
         scrollView.setContentOffset(CGPoint(x: 0, y: 250), animated: true)
     }
     
+    //retreives data from coredata 'Holdings' checks if the coin already exists. If it does, adds the amount to existing holdings, otherwise adds a new entry
     @IBAction func addToHoldings(_ sender: Any) {
         
         inHoldings = false
@@ -105,7 +106,7 @@ class CoinView: UIViewController, UITextFieldDelegate {
         }
         
     }
-    
+    //searches coredata for existing entry and removes coin
     @IBAction func removeAll(_ sender: Any) {
             
         let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Holdings")
@@ -128,7 +129,7 @@ class CoinView: UIViewController, UITextFieldDelegate {
         }
         
     }
-    
+    //adds the current coin to favourites database
     @IBAction func addToFavorites(_ sender: UIButton) {
         
         let entity = NSEntityDescription.entity(forEntityName: "Favorites", in: context)!
@@ -146,6 +147,8 @@ class CoinView: UIViewController, UITextFieldDelegate {
         }
         
     }
+    
+    //removes selected coin from coredata
     @IBAction func removeFavorite(_ sender: Any) {
         
         let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Favorites")
@@ -169,6 +172,7 @@ class CoinView: UIViewController, UITextFieldDelegate {
         }
     }
     
+    //checks current holdings and updates buttons on the screen accordingly
     func checkHoldings() {
         inHoldings = false
         
@@ -199,7 +203,7 @@ class CoinView: UIViewController, UITextFieldDelegate {
         }
         
     }
-    
+    //checks if current coin is in favorites for updating buttons
     func checkFavorites() {
         
         let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Favorites")
@@ -233,7 +237,7 @@ class CoinView: UIViewController, UITextFieldDelegate {
         }
         
     }
-    
+    //retreives the selected coin from previous view and updates information for that particular coin.
     func getCoinData() {
         let jsonURL = "https://api.coinmarketcap.com/v1/ticker/\(coinID)/?convert=AUD"
         let url = URL(string: jsonURL)
