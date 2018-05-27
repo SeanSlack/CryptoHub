@@ -39,6 +39,7 @@ class FavoritesView: UIViewController, UITableViewDataSource, UITableViewDelegat
         getFavoriteCoins()
         
         // Do any additional setup after loading the view, typically from a nib.
+    
     }
 
     override func didReceiveMemoryWarning() {
@@ -60,25 +61,25 @@ class FavoritesView: UIViewController, UITableViewDataSource, UITableViewDelegat
             let result = try context.fetch(request)
             for coin in result as! [NSManagedObject] {
                 
-                let favCoin = (coin.value(forKey: "saveCoinID") as! String)
-                print(coin.value(forKey: "saveCoinID") as! String)
                 
-                let jsonURL = "https://api.coinmarketcap.com/v1/ticker/\(favCoin)/?convert=AUD"
-                let url = URL(string: jsonURL)
+                if let favCoin = (coin.value(forKey: "favCoinID") as! String?) {
                 
-                URLSession.shared.dataTask(with: url!) { [unowned self] (data, response, error) in
-                    guard let data = data else { return }
-                    do {
-                        self.coins = try JSONDecoder().decode([Coin].self, from: data) + self.coins
-                        DispatchQueue.main.async {
-                            self.tableView.reloadData()
-                        }
+                    let jsonURL = "https://api.coinmarketcap.com/v1/ticker/\(favCoin)/?convert=AUD"
+                    let url = URL(string: jsonURL)
+                
+                    URLSession.shared.dataTask(with: url!) { [unowned self] (data, response, error) in
+                        guard let data = data else { return }
+                        do {
+                            self.coins = try JSONDecoder().decode([Coin].self, from: data) + self.coins
+                            DispatchQueue.main.async {
+                                self.tableView.reloadData()
+                            }
                         
-                    } catch {
-                        print("Error is : \n\(error)")
+                        } catch {
+                            print("Error is : \n\(error)")
+                        }
+                        }.resume()
                     }
-                    }.resume()
-                
             }
 
         } catch {
@@ -105,6 +106,16 @@ class FavoritesView: UIViewController, UITableViewDataSource, UITableViewDelegat
         cell.favPriceLabel.text = coin.price
         
         return cell
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "favViewSegue" {
+            if let indexPath = self.tableView.indexPathForSelectedRow {
+                let controller = segue.destination as! CoinView
+                let value = coins[indexPath.row]
+                controller.coinID = value.id
+            }
+        }
     }
  
     override var prefersStatusBarHidden: Bool

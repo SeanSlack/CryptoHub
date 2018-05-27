@@ -14,11 +14,41 @@
 		14AFD811208CD0B30019AAAC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 14AFD80F208CD0B30019AAAC /* Main.storyboard */; };
 		14AFD813208CD0B40019AAAC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 14AFD812208CD0B40019AAAC /* Assets.xcassets */; };
 		14AFD816208CD0B40019AAAC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 14AFD814208CD0B40019AAAC /* LaunchScreen.storyboard */; };
-		14CE23DD20B028F9005F8085 /* Favorites.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14CE23DC20B028F9005F8085 /* Favorites.swift */; };
+		14CE23DD20B028F9005F8085 /* CoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14CE23DC20B028F9005F8085 /* CoreData.swift */; };
 		14CE23E020B02BFB005F8085 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14CE23DF20B02BFB005F8085 /* CoreData.framework */; };
 		14CE23E320B03EC8005F8085 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 14CE23E120B03EC8005F8085 /* Model.xcdatamodeld */; };
 		14CE23E720B144B6005F8085 /* Coins.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14CE23E620B144B5005F8085 /* Coins.swift */; };
+		14F1E88320B6348800367BCD /* HoldingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14F1E88220B6348800367BCD /* HoldingsView.swift */; };
+		14F1E88A20B6616B00367BCD /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14F1E88920B6616B00367BCD /* NotificationCenter.framework */; };
+		14F1E88D20B6616B00367BCD /* TodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14F1E88C20B6616B00367BCD /* TodayViewController.swift */; };
+		14F1E89020B6616B00367BCD /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 14F1E88E20B6616B00367BCD /* MainInterface.storyboard */; };
+		14F1E89420B6616B00367BCD /* Widget.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 14F1E88820B6616B00367BCD /* Widget.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		14F1E89A20B6673700367BCD /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 14CE23E120B03EC8005F8085 /* Model.xcdatamodeld */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		14F1E89220B6616B00367BCD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 14AFD800208CD0B30019AAAC /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 14F1E88720B6616B00367BCD;
+			remoteInfo = Widget;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		14F1E89820B6616B00367BCD /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				14F1E89420B6616B00367BCD /* Widget.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		142CC15A20A6BA7D00284D34 /* CoinView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinView.swift; sourceTree = "<group>"; };
@@ -30,10 +60,16 @@
 		14AFD812208CD0B40019AAAC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		14AFD815208CD0B40019AAAC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		14AFD817208CD0B40019AAAC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		14CE23DC20B028F9005F8085 /* Favorites.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Favorites.swift; sourceTree = "<group>"; };
+		14CE23DC20B028F9005F8085 /* CoreData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreData.swift; sourceTree = "<group>"; };
 		14CE23DF20B02BFB005F8085 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		14CE23E220B03EC8005F8085 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		14CE23E620B144B5005F8085 /* Coins.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coins.swift; sourceTree = "<group>"; };
+		14F1E88220B6348800367BCD /* HoldingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HoldingsView.swift; sourceTree = "<group>"; };
+		14F1E88820B6616B00367BCD /* Widget.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = Widget.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		14F1E88920B6616B00367BCD /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
+		14F1E88C20B6616B00367BCD /* TodayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayViewController.swift; sourceTree = "<group>"; };
+		14F1E88F20B6616B00367BCD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
+		14F1E89120B6616B00367BCD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -45,6 +81,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		14F1E88520B6616B00367BCD /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				14F1E88A20B6616B00367BCD /* NotificationCenter.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -52,6 +96,7 @@
 			isa = PBXGroup;
 			children = (
 				14AFD80A208CD0B30019AAAC /* CryptoHub */,
+				14F1E88B20B6616B00367BCD /* Widget */,
 				14AFD809208CD0B30019AAAC /* Products */,
 				14CE23DE20B02BFB005F8085 /* Frameworks */,
 			);
@@ -61,6 +106,7 @@
 			isa = PBXGroup;
 			children = (
 				14AFD808208CD0B30019AAAC /* CryptoHub.app */,
+				14F1E88820B6616B00367BCD /* Widget.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -76,9 +122,10 @@
 				14AFD817208CD0B40019AAAC /* Info.plist */,
 				1492626220996B1E00812E7E /* SearchView.swift */,
 				142CC15A20A6BA7D00284D34 /* CoinView.swift */,
-				14CE23DC20B028F9005F8085 /* Favorites.swift */,
+				14CE23DC20B028F9005F8085 /* CoreData.swift */,
 				14CE23E120B03EC8005F8085 /* Model.xcdatamodeld */,
 				14CE23E620B144B5005F8085 /* Coins.swift */,
+				14F1E88220B6348800367BCD /* HoldingsView.swift */,
 			);
 			path = CryptoHub;
 			sourceTree = "<group>";
@@ -87,9 +134,21 @@
 			isa = PBXGroup;
 			children = (
 				14CE23DF20B02BFB005F8085 /* CoreData.framework */,
+				14F1E88920B6616B00367BCD /* NotificationCenter.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
+		};
+		14F1E88B20B6616B00367BCD /* Widget */ = {
+			isa = PBXGroup;
+			children = (
+				14F1E88C20B6616B00367BCD /* TodayViewController.swift */,
+				14F1E88E20B6616B00367BCD /* MainInterface.storyboard */,
+				14F1E89120B6616B00367BCD /* Info.plist */,
+			);
+			path = Widget;
+			sourceTree = "<group>";
+			tabWidth = 4;
 		};
 /* End PBXGroup section */
 
@@ -101,15 +160,34 @@
 				14AFD804208CD0B30019AAAC /* Sources */,
 				14AFD805208CD0B30019AAAC /* Frameworks */,
 				14AFD806208CD0B30019AAAC /* Resources */,
+				14F1E89820B6616B00367BCD /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				14F1E89320B6616B00367BCD /* PBXTargetDependency */,
 			);
 			name = CryptoHub;
 			productName = CryptoHub;
 			productReference = 14AFD808208CD0B30019AAAC /* CryptoHub.app */;
 			productType = "com.apple.product-type.application";
+		};
+		14F1E88720B6616B00367BCD /* Widget */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 14F1E89720B6616B00367BCD /* Build configuration list for PBXNativeTarget "Widget" */;
+			buildPhases = (
+				14F1E88420B6616B00367BCD /* Sources */,
+				14F1E88520B6616B00367BCD /* Frameworks */,
+				14F1E88620B6616B00367BCD /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Widget;
+			productName = Widget;
+			productReference = 14F1E88820B6616B00367BCD /* Widget.appex */;
+			productType = "com.apple.product-type.app-extension";
 		};
 /* End PBXNativeTarget section */
 
@@ -123,6 +201,19 @@
 				TargetAttributes = {
 					14AFD807208CD0B30019AAAC = {
 						CreatedOnToolsVersion = 9.3;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 0;
+							};
+						};
+					};
+					14F1E88720B6616B00367BCD = {
+						CreatedOnToolsVersion = 9.3.1;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 0;
+							};
+						};
 					};
 				};
 			};
@@ -140,6 +231,7 @@
 			projectRoot = "";
 			targets = (
 				14AFD807208CD0B30019AAAC /* CryptoHub */,
+				14F1E88720B6616B00367BCD /* Widget */,
 			);
 		};
 /* End PBXProject section */
@@ -155,6 +247,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		14F1E88620B6616B00367BCD /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				14F1E89020B6616B00367BCD /* MainInterface.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -162,8 +262,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				14F1E88320B6348800367BCD /* HoldingsView.swift in Sources */,
 				14AFD80E208CD0B30019AAAC /* FavoritesView.swift in Sources */,
-				14CE23DD20B028F9005F8085 /* Favorites.swift in Sources */,
+				14CE23DD20B028F9005F8085 /* CoreData.swift in Sources */,
 				142CC15B20A6BA7D00284D34 /* CoinView.swift in Sources */,
 				14CE23E720B144B6005F8085 /* Coins.swift in Sources */,
 				1492626320996B1E00812E7E /* SearchView.swift in Sources */,
@@ -172,7 +273,24 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		14F1E88420B6616B00367BCD /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				14F1E88D20B6616B00367BCD /* TodayViewController.swift in Sources */,
+				14F1E89A20B6673700367BCD /* Model.xcdatamodeld in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		14F1E89320B6616B00367BCD /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 14F1E88720B6616B00367BCD /* Widget */;
+			targetProxy = 14F1E89220B6616B00367BCD /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		14AFD80F208CD0B30019AAAC /* Main.storyboard */ = {
@@ -189,6 +307,14 @@
 				14AFD815208CD0B40019AAAC /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		14F1E88E20B6616B00367BCD /* MainInterface.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				14F1E88F20B6616B00367BCD /* Base */,
+			);
+			name = MainInterface.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -311,6 +437,7 @@
 		14AFD81B208CD0B40019AAAC /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 24SM6522LU;
@@ -329,6 +456,7 @@
 		14AFD81C208CD0B40019AAAC /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 24SM6522LU;
@@ -339,6 +467,44 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = Deakin.CryptoHub;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		14F1E89520B6616B00367BCD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 24SM6522LU;
+				INFOPLIST_FILE = Widget/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = Deakin.CryptoHub.Widget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		14F1E89620B6616B00367BCD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 24SM6522LU;
+				INFOPLIST_FILE = Widget/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = Deakin.CryptoHub.Widget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -361,6 +527,15 @@
 			buildConfigurations = (
 				14AFD81B208CD0B40019AAAC /* Debug */,
 				14AFD81C208CD0B40019AAAC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		14F1E89720B6616B00367BCD /* Build configuration list for PBXNativeTarget "Widget" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				14F1E89520B6616B00367BCD /* Debug */,
+				14F1E89620B6616B00367BCD /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

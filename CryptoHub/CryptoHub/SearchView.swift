@@ -28,8 +28,6 @@ class SearchView: UIViewController, UITableViewDataSource, UITableViewDelegate, 
     
     var coins = [Coin]()
     
-    var coinSearchResults:Array<Coin>?
-    
     let textCellIdentifier = "TextCell"
     
     @IBOutlet weak var tableView: UITableView!
